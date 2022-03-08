@@ -7,8 +7,11 @@ movl    %esp, %ebp
 pushl %ebx
 # DEBUT COMPLETION
 
+init:
 movl $0, %ecx
 movl 12(%esp), %eax
+jmp print
+
 check_number:
 cmpl $1, %eax
 je retour
@@ -21,7 +24,7 @@ jne even
 
 odd:
 movl $3, %ebx
-imul %ebx, %eax
+mul %ebx
 addl $1, %eax
 jmp print
 
@@ -35,7 +38,8 @@ print:
 pushl %ecx
 pushl %eax
 call afficher
-addl $8, %esp
+popl %eax
+popl %ecx
 incl %ecx
 jmp check_number
 
