@@ -7,6 +7,46 @@ movl   %esp, %ebp
 pushl %ebx
 # DEBUT COMPLETION
 
+init:
+movl 16(%esp), %ecx
+movl 12(%esp), %eax
+jmp print
+
+check_number:
+cmpl $1, %eax
+je retour
+
+movl $1, %ebx
+andl %eax, %ebx
+cmpl $1, %ebx
+je odd
+jne even
+
+odd:
+movl $3, %ebx
+mul %ebx
+addl $1, %eax
+jmp print
+
+even:
+movl $0, %edx
+movl $2, %ebx
+idiv %ebx
+jmp print
+
+print:
+pushl %ecx
+pushl %eax
+call afficher
+popl %eax
+popl %ecx
+incl %ecx
+
+pushl %ecx
+pushl %eax
+call syracuse_s_rec
+
+
 # FIN COMPLETION
 # NE RIEN MODIFIER APRES CETTE LIGNE
 retour:   
