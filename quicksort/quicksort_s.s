@@ -6,22 +6,22 @@ movl %esp, %ebp
 pushl %ebx
 # DEBUT COMPLETION
 
-movl 8(%esp), %eax
-movl 12(%esp), %ebx     # %ebx -> left
-movl 16(%esp), %ecx     # %ecx -> right
+movl 12(%esp), %eax
+movl 16(%esp), %ebx     # %ebx -> left
+movl 20(%esp), %ecx     # %ecx -> right
 
 check_recursive_end:
 movl $2, %edx
 addl %ebx, %edx
 cmpl %eax, %edx
-jb retour               # Deux éléments ou moins -> return
+jbe retour              # Deux éléments ou moins -> return
 
 get_pivot:
 pushl %ecx
-#pushl %ebx
+pushl %ebx
 pushl %eax
 call medianOfThree
-popl %edx               # %edx -> pivot
+movl %eax, %edx         # %edx -> pivot
 popl %eax
 #popl %ebx
 popl %ecx
