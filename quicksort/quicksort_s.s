@@ -13,8 +13,8 @@ movl 20(%esp), %ecx     # %ecx -> right
 check_recursive_end:
 movl $2, %edx
 addl %ebx, %edx
-cmpl %eax, %edx
-jbe retour              # Deux éléments ou moins -> return
+cmpl %ecx, %edx
+ja retour              # Deux éléments ou moins -> return
 
 get_pivot:
 pushl %ecx
@@ -23,7 +23,6 @@ pushl %eax
 call medianOfThree
 movl %eax, %edx         # %edx -> pivot
 popl %eax
-#popl %ebx
 popl %ecx
 
 preparation_for_loop:
