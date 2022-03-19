@@ -46,18 +46,27 @@ cmpl %ebx, %ecx
 jbe prepare_next_call
 
 permutation:
-pushl (%eax, %ebx, 4)     # T[i]
-pushl (%eax, %ecx, 4)     # T[k]
-popl (%eax, %ebx, 4)      # T[i] = T[k]
-popl (%eax, %ecx, 4)      # T[k] = T[i]
+pushl %edx
+pushl %ecx                # k
+pushl %ebx                # i
+pushl %eax                # T_
+call swapRefs
+popl %eax
+popl %ebx
+popl %ecx
+popl %edx
 jmp left_to_pivot
 
 prepare_next_call:
-pushl (%eax, %ebx, 4)     # T[i]
-movl 24(%esp), %ecx       # right (pivot -> right-1) 
-pushl -4(%eax, %ecx, 4)   # pivot
-popl (%eax, %ebx, 4)      # T[i] = pivot
-popl -4(%eax, %ecx, 4)    # pivot = T[i]
+movl 20(%esp), %ecx
+subl $1, %ecx             # right - 1
+pushl %ecx
+pushl %ebx                # i
+pushl %eax                # T_
+call swapRefs
+popl %eax
+popl %ebx
+popl %ecx
 
 call_again:
 subl $1, %ebx
