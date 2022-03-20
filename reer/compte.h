@@ -12,7 +12,8 @@ private:
 public:
     Compte(int, int, int, int, int, int);
     virtual ~Compte();
-    virtual int montantAInvestirMaintenant();
+    virtual int montantAInvestirMaintenant() override;
+    virtual int montantAInvestirMaintenantAsm() override;
 };
 
 #endif

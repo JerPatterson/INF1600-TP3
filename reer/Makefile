@@ -3,7 +3,7 @@ CFLAGS=-g -m32 -Wall
 LDFLAGS=-lm
 RM=rm -f
 TARGET=reer
-OBJECTS=main.o reer.o compte.o salaireFinalAsm.s montantAEpargnerChaqueAnneeAsm.s montantAInvestirMaintenantAsm.s montantAmasseFinalAvantRetraiteAsm.s montantInvestirMaintenantCompteAsm.s
+OBJECTS=main.o reer.o compte.o salaireFinalAsm.s montantAEpargnerChaqueAnneeAsm.s montantAInvestirMaintenantAsm.s montantAmasseFinalAvantRetraiteAsm.s montantAInvestirMaintenantCompteAsm.s
 
 .PHONY: clean
 
