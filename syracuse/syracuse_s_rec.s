@@ -12,11 +12,11 @@ movl 12(%esp), %eax
 movl 16(%esp), %ecx
 
 print:
-pushl %ecx
 pushl %eax
+pushl %ecx
 call afficher
-popl %eax
 popl %ecx
+popl %eax
 incl %ecx
 
 check_number:

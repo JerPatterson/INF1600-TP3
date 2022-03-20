@@ -21,11 +21,11 @@ int main()
    syracuse_s_iter(u0);
 
    // Decommentez cette partie lorsque vous avez implemente la version recursive
-   // printf("\n\nSuite de syracuse recursive - ASM\n");
-   // syracuse_s_rec(u0, 0);
+   printf("\n\nSuite de syracuse recursive - ASM\n");
+   syracuse_s_rec(u0, 0);
 
-   // printf("\n\nSuite de syracuse recursive - C\n");
-   // syracuse_c_rec(u0, 0);
+   printf("\n\nSuite de syracuse recursive - C\n");
+   syracuse_c_rec(u0, 0);
 
    return 0;
 }

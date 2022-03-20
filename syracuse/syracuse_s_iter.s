@@ -35,11 +35,11 @@ idiv %ebx
 jmp print
 
 print:
-pushl %ecx
 pushl %eax
+pushl %ecx
 call afficher
-popl %eax
 popl %ecx
+popl %eax
 incl %ecx
 jmp check_number
 
