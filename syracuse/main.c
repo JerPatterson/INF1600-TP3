@@ -66,7 +66,7 @@ void syracuse_c_rec(unsigned int un, unsigned int i)
    }
 }
 
-void afficher(int un, int i)
+void afficher(int i, int un)
 {
-   printf("Syracuse(%d) = %d\n", un, i);
+   printf("Syracuse(%d) = %d\n", i, un);
 }
