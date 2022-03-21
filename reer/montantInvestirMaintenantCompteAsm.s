@@ -7,6 +7,8 @@ pushl %ebp
 movl %esp, %ebp
 # DEBUT COMPLETION
 
+# NOT TODO ?
+
 # FIN COMPLETION
 # NE RIEN MODIFIER APRES CETTE LIGNE
 retour:
