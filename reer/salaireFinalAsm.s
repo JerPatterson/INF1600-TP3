@@ -12,7 +12,7 @@ fildl 8(%eax)                     # salaire de départ
 movl 12(%eax), %edx               # augmentation salariale 
 movl 24(%eax), %ecx               # nb années avant retraite
 
-start:
+start_coefficient:
 pushl $100
 pushl %edx
 pushl $1
@@ -43,6 +43,7 @@ loop salary_coefficient
 
 final_salary:
 fmulp
+subl $4, %esp
 fistl (%esp)
 popl %eax
 
