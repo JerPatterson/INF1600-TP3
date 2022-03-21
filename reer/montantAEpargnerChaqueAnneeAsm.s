@@ -51,6 +51,9 @@ fmulp
 loop interest_rate
 
 last_calculation:
+pushl $1
+fild (%esp)
+fsubrp
 fdivrp
 
 pushl $1                         # pour contrer l'arrondissement de fistl
