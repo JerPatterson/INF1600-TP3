@@ -44,9 +44,13 @@ loop salary_coefficient
 final_salary:
 fmulp
 
-pushl $1                          # pour contrer l'arrondissement de fistl
+pushl $1                         # pour contrer l'arrondissement de fistl
 fild (%esp)
+pushl $2
+fild (%esp)
+fdivrp
 fsubrp
+addl $4, %esp
 
 fistl (%esp)
 popl %eax

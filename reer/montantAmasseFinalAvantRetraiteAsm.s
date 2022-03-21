@@ -17,10 +17,20 @@ pushl %eax
 fildl (%esp)                      # salaire final
 movl 8(%esp), %eax
 fildl 16(%eax)
-addl $12, %esp
 
 fmulp
 fdivp
+
+pushl $1                         # pour contrer l'arrondissement de fistl
+fild (%esp)
+pushl $2
+fild (%esp)
+fdivrp
+fsubrp
+
+fistl (%esp)                      # pour avoir le résultat en entier
+fildl (%esp)
+addl $20, %esp
 
 movl $2, %edx
 jmp start_interest
@@ -72,9 +82,17 @@ addl $8, %esp
 fdivp
 fmulp
 fdivrp
-subl $4, %esp
+
+pushl $1                         # pour contrer l'arrondissement de fistl
+fild (%esp)
+pushl $2
+fild (%esp)
+fdivrp
+fsubrp
+
 fistl (%esp)
 popl %eax
+addl $8, %esp
 
 # FIN COMPLETION
 # NE RIEN MODIFIER APRES CETTE LIGNE
