@@ -7,17 +7,17 @@ pushl %ebp
 movl %esp, %ebp
 # DEBUT COMPLETION
 
-salary_retirement:
 pushl 8(%esp)
 call _ZN4Reer15salaireFinalAsmEv
 
-pushl %eax
-fild 4(%esp)                      # salaire final
-movl 12(%esp), %eax
-fild 16(%eax)
+salary_retirement:
 pushl $100
 fild (%esp)
-addl $8, %esp
+pushl %eax
+fildl (%esp)                      # salaire final
+movl 8(%esp), %eax
+fildl 16(%eax)
+addl $12, %esp
 
 fmulp
 fdivp
@@ -26,11 +26,14 @@ movl $2, %edx
 jmp start_interest
 
 numerator_calculation:
+pushl $1
+fild (%esp)
+fsubrp
 fmulp
 
 start_interest:
 movl 4(%eax), %ecx                 # années de retraite
-subl $2, %ecx
+subl $1, %ecx
 
 pushl $1
 fild (%esp)
@@ -39,7 +42,7 @@ pushl $100
 fild (%esp)
 addl $8, %esp
 
-fdivp
+fdivrp
 faddp
 
 interest_rate:
@@ -50,7 +53,7 @@ pushl $100
 fild (%esp)
 addl $8, %esp
 
-fdivp
+fdivrp
 faddp
 fmulp
 loop interest_rate
@@ -68,6 +71,8 @@ addl $8, %esp
 
 fdivp
 fmulp
+fdivrp
+subl $4, %esp
 fistl (%esp)
 popl %eax
 
