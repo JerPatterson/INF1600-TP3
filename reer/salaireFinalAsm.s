@@ -16,9 +16,9 @@ start_coefficient:
 subl $2, %ecx
 fld1
 pushl %edx
-fild (%esp)
+fildl (%esp)
 pushl $100
-fild (%esp)
+fildl (%esp)
 
 fdivrp
 faddp
@@ -35,7 +35,7 @@ fmulp
 
 fld1                             # pour contrer l'arrondissement de fistl
 pushl $2
-fild (%esp)
+fildl (%esp)
 fdivrp
 fsubrp
 

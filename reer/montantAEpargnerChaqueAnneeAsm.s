@@ -16,8 +16,8 @@ movl 4(%esp), %eax                  # attributs
 
 numerator:
 pushl $100
-fild (%esp)
-fild 20(%eax)                      # taux d'intérêts
+fildl (%esp)
+fildl 20(%eax)                      # taux d'intérêts
 add $12, %esp
 
 fdivp
@@ -28,10 +28,10 @@ movl 4(%eax), %ecx                 # années de retraite
 subl $1, %ecx
 
 pushl $1
-fild (%esp)
-fild 20(%eax)                      # taux d'intérêts
+fildl (%esp)
+fildl 20(%eax)                      # taux d'intérêts
 pushl $100
-fild (%esp)
+fildl (%esp)
 addl $8, %esp
 
 fdivrp
@@ -39,10 +39,10 @@ faddp
 
 interest_rate:
 pushl $1
-fild (%esp)
-fild 20(%eax)                      # taux d'intérêts
+fildl (%esp)
+fildl 20(%eax)                      # taux d'intérêts
 pushl $100
-fild (%esp)
+fildl (%esp)
 addl $8, %esp
 
 fdivrp
@@ -52,14 +52,14 @@ loop interest_rate
 
 last_calculation:
 pushl $1
-fild (%esp)
+fildl (%esp)
 fsubrp
 fdivrp
 
 pushl $1                         # pour contrer l'arrondissement de fistl
-fild (%esp)
+fildl (%esp)
 pushl $2
-fild (%esp)
+fildl (%esp)
 fdivrp
 fsubrp
 
