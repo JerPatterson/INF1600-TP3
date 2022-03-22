@@ -27,7 +27,7 @@ fildl (%esp)
 fdivrp
 fsubrp
 
-fistl (%esp)                      # pour avoir le résultat en entier
+fistpl (%esp)                      # pour avoir le résultat en entier
 fildl (%esp)
 
 movl $2, %edx
@@ -79,7 +79,7 @@ fildl (%esp)
 fdivrp
 fsubrp
 
-fistl (%esp)
+fistpl (%esp)
 popl %eax
 movl %ebp, %esp
 

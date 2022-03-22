@@ -39,7 +39,7 @@ fildl (%esp)
 fdivrp
 fsubrp
 
-fistl (%esp)
+fistpl (%esp)
 popl %eax
 movl %ebp, %esp
 
