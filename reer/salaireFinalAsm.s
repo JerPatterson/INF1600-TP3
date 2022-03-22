@@ -13,14 +13,12 @@ movl 12(%eax), %edx               # augmentation salariale
 movl 24(%eax), %ecx               # nb années avant retraite
 
 start_coefficient:
-pushl $100
-pushl %edx
 pushl $1
-
 fild (%esp)
-fild 4(%esp)
-fild 8(%esp)
-addl $12, %esp
+pushl %edx
+fild (%esp)
+pushl $100
+fild (%esp)
 
 fdivrp
 faddp
@@ -28,16 +26,15 @@ subl $2, %ecx
 
 salary_coefficient:
 pushl $100
-pushl %edx
-pushl $1
-
 fild (%esp)
-fild 4(%esp)
-fild 8(%esp)
-addl $12, %esp
+pushl %edx
+fild (%esp)
+fdivp
 
-fdivrp
+pushl $1
+fildl (%esp)
 faddp
+
 fmulp
 loop salary_coefficient
 
@@ -50,10 +47,10 @@ pushl $2
 fild (%esp)
 fdivrp
 fsubrp
-addl $4, %esp
 
 fistl (%esp)
 popl %eax
+movl %ebp, %esp
 
 # FIN COMPLETION
 # NE RIEN MODIFIER APRES CETTE LIGNE
