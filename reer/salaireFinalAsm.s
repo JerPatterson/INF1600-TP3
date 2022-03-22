@@ -13,8 +13,8 @@ movl 12(%eax), %edx               # augmentation salariale
 movl 24(%eax), %ecx               # nb années avant retraite
 
 start_coefficient:
-pushl $1
-fild (%esp)
+subl $2, %ecx
+fld1
 pushl %edx
 fild (%esp)
 pushl $100
@@ -22,27 +22,18 @@ fild (%esp)
 
 fdivrp
 faddp
-subl $2, %ecx
+fstps (%esp)
+flds (%esp)
 
 salary_coefficient:
-pushl $100
-fild (%esp)
-pushl %edx
-fild (%esp)
-fdivp
-
-pushl $1
-fildl (%esp)
-faddp
-
+flds (%esp)
 fmulp
 loop salary_coefficient
 
 final_salary:
 fmulp
 
-pushl $1                         # pour contrer l'arrondissement de fistl
-fild (%esp)
+fld1                             # pour contrer l'arrondissement de fistl
 pushl $2
 fild (%esp)
 fdivrp
