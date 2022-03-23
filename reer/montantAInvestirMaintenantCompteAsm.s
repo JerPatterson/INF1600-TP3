@@ -14,20 +14,19 @@ call _ZN4Reer15salaireFinalAsmEv
 pushl %eax
 movl 4(%esp), %eax                # attribut
 fildl 28(%eax)                    # encaisse
-movl 24(%eax), %ecx                # annee avant retaite
+movl 24(%eax), %ecx               # annee avant retaite
 fildl (%esp)                      # salaire final
 
-
-start_coefficient:
+start_amount:
 subl $1, %ecx
 flds taux
 
-salary_coefficient:
+amount:
 flds taux
 fmulp
-loop salary_coefficient
+loop amount
 
-final_salary:
+final_amount:
 fdivrp
 fsubrp
 

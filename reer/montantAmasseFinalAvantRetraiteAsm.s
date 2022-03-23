@@ -14,30 +14,27 @@ salary_retirement:
 pushl $100
 fildl (%esp)
 pushl %eax
-fildl (%esp)                      # salaire final
+fildl (%esp)                       # salaire final
 movl 8(%esp), %eax
-fildl 16(%eax)
+fildl 16(%eax)                     # salaire voulu retraite
 
 fmulp
 fdivp
 
-pushl $1                         # pour contrer l'arrondissement de fistl
-fildl (%esp)
+fld1                               # pour contrer l'arrondissement de fistl
 pushl $2
 fildl (%esp)
 fdivrp
 fsubrp
 
-fistl (%esp)                      # pour avoir le résultat en entier
+fistl (%esp)                       # pour avoir le résultat en entier
 fildl (%esp)
-addl $20, %esp
 
 movl $2, %edx
 jmp start_interest
 
 numerator_calculation:
-pushl $1
-fildl (%esp)
+fld1
 fsubrp
 fmulp
 
@@ -45,23 +42,19 @@ start_interest:
 movl 4(%eax), %ecx                 # années de retraite
 subl $1, %ecx
 
-pushl $1
-fildl (%esp)
-fildl 20(%eax)                      # taux d'intérêts
+fld1
+fildl 20(%eax)                     # taux d'intérêts
 pushl $100
 fildl (%esp)
-addl $8, %esp
 
 fdivrp
 faddp
 
 interest_rate:
-pushl $1
-fildl (%esp)
-fildl 20(%eax)                      # taux d'intérêts
+fld1
+fildl 20(%eax)                     # taux d'intérêts
 pushl $100
 fildl (%esp)
-addl $8, %esp
 
 fdivrp
 faddp
@@ -77,14 +70,12 @@ pushl $100
 fildl (%esp)
 pushl 20(%eax)
 fildl (%esp)
-addl $8, %esp
 
 fdivp
 fmulp
 fdivrp
 
-pushl $1                         # pour contrer l'arrondissement de fistl
-fildl (%esp)
+fld1                         # pour contrer l'arrondissement de fistl
 pushl $2
 fildl (%esp)
 fdivrp
@@ -92,7 +83,6 @@ fsubrp
 
 fistpl (%esp)
 popl %eax
-addl $8, %esp
 
 # FIN COMPLETION
 # NE RIEN MODIFIER APRES CETTE LIGNE

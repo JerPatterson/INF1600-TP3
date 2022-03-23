@@ -47,7 +47,7 @@ fsubrp
 
 fistl (%esp)
 popl %eax
-movl %ebp, %esp
+
 # FIN COMPLETION
 # NE RIEN MODIFIER APRES CETTE LIGNE
 retour:
