@@ -14,7 +14,7 @@ check_recursive_end:
 movl $2, %edx
 addl %ebx, %edx
 cmpl %ecx, %edx
-ja retour              # Deux éléments ou moins -> return
+ja retour               # Deux éléments ou moins -> return
 
 get_pivot:
 pushl %ecx
@@ -85,7 +85,6 @@ pushl 20(%esp)            # right
 pushl %ebx
 pushl %eax
 call quicksort_s
-
 
 # FIN COMPLETION
 # NE RIEN MODIFIER APRES CETTE LIGNE
