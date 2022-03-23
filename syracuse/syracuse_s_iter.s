@@ -43,7 +43,6 @@ popl %eax
 incl %ecx
 jmp check_number
 
-
 # FIN COMPLETION
 # NE RIEN MODIFIER APRES CETTE LIGNE
 retour:   

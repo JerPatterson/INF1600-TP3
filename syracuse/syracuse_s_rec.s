@@ -46,7 +46,6 @@ pushl %ecx
 pushl %eax
 call syracuse_s_rec
 
-
 # FIN COMPLETION
 # NE RIEN MODIFIER APRES CETTE LIGNE
 retour:   
